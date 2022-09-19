@@ -1,0 +1,77 @@
+@startuml
+
+entity citizens {
+	* id : CHAR
+	--
+	* name : VARCHAR
+	* nik : VARCHAR
+	* email : VARCHAR
+	* password: VARCHAR
+	* address: VARCHAR
+	* status : VARCHAR
+}
+
+entity admins {
+	* id : CHAR
+	--
+	* email : VARCHAR
+	* passowrd : VARCHAR
+	* name : VARCHAR
+}
+
+entity complaints {
+	*id : CHAR 
+	--
+	customerId : CHAR
+	complaint_type: VARCHAR
+	description: TEXT
+	image_url: VARCHAR
+	createdAt: datetime
+}
+
+entity complaint_result {
+	* id : CHAR
+	--
+	* adminId: CHAR
+	* complaintId:CHAR
+	status: VARCHAR
+	message : TEXT
+}
+
+entity newst {
+	* id : CHAR
+	--
+	* adminId: CHAR
+	* title : VARCHAR
+	* description: TEXT
+	image_news: VARCHAR
+}
+
+entity letters {
+	* id :  CHAR
+	--
+	* title : VARCHAR
+	* letter_number: VARCHAR
+	* content_letter : TEXT
+	* village_address : TEXT
+	* village_head : VARCHAR
+	* nip: INT
+}
+
+entity archives {
+	* id : CHAR
+	--
+	* adminId : CHAR
+	name : VARCHAR
+	letter_name : VARCHAR
+	nik : VARCHAR
+}
+
+cityzens ||--o{ complaints
+complaints ||--|| complaint_result
+letters ||--|{ complaints
+admins ||-o{ newst
+admins ||-|| complaint_result
+complaint_result ||--|| archives
+
+@enduml
