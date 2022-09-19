@@ -7,6 +7,7 @@ import sequelizeStore from 'connect-session-sequelize'
 import bodyParser from 'body-parser'
 import db from './database/database.js'
 import authRoute from './app/auth/authRoute.js'
+import letterRoute from './app/letters/letterRoute.js'
 
 
 const app = express();
@@ -39,6 +40,7 @@ app.use(morgan('dev'))
 app.use(express.static('public'))
 
 app.use('/api', authRoute )
+app.use('/api',  letterRoute)
 
 
 app.listen(dbPort, () => console.log('Server is running port 5000'))
