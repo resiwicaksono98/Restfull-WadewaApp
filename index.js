@@ -6,8 +6,14 @@ import session from 'express-session'
 import sequelizeStore from 'connect-session-sequelize'
 import bodyParser from 'body-parser'
 import db from './database/database.js'
+import authRoute from './app/auth/authRoute.js'
 
-const app = express()
+
+const app = express();
+
+// (async () => {
+// 	await db.sync()
+// })();
 
 const sessionStore = sequelizeStore(session.Store)
 const store = new sessionStore({
@@ -31,6 +37,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
 app.use(express.static('public'))
+
+app.use('/api', authRoute )
 
 
 app.listen(dbPort, () => console.log('Server is running port 5000'))

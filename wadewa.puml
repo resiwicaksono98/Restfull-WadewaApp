@@ -1,10 +1,11 @@
 @startuml
 
 entity citizens {
-	* id : CHAR
+	* id : INT
+	* citizenId: CHAR
 	--
 	* name : VARCHAR
-	* nik : VARCHAR
+	* nik : INTEGER
 	* email : VARCHAR
 	* password: VARCHAR
 	* address: VARCHAR
@@ -12,7 +13,8 @@ entity citizens {
 }
 
 entity admins {
-	* id : CHAR
+	* id : INT
+	* adminId : CHAR
 	--
 	* email : VARCHAR
 	* passowrd : VARCHAR
