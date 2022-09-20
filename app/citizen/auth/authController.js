@@ -1,5 +1,5 @@
-import Admin from "../../Admin/adminModel.js";
-import Citizen from "../citizenModel.js";
+import Admin from "../../Models/adminModel.js";
+import Citizen from "../../Models/citizenModel.js";
 import bcrypt from 'bcrypt'
 
 export const registerUser = async (req, res) => {
@@ -45,5 +45,6 @@ export const me = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
 	req.session.citizenId = null
+	req.userId = ""
 	res.status(200).json({ msg: "You Are Logout" })
 }

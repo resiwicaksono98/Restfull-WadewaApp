@@ -1,16 +1,11 @@
 import { Sequelize } from "sequelize";
 import db from "../../database/database.js";
-import Citizen from "../citizen/citizenModel.js";
-import Letters from "../letters/lettersModel.js";
+import Citizen from "./citizenModel.js";
+import Letters from "./lettersModel.js";
 
-const {DataTypes} = Sequelize
+const { DataTypes } = Sequelize
 
 const Complaint = db.define('complaints', {
-	id: {
-		type: DataTypes.INTEGER,
-		autoIncrement: true,
-		primaryKey: true
-	},
 	complaintId: {
 		type: DataTypes.UUID,
 		primaryKey: true,
@@ -28,16 +23,16 @@ const Complaint = db.define('complaints', {
 	description: {
 		type: DataTypes.TEXT
 	},
-	image_url: {type: DataTypes.STRING}
+	image_url: { type: DataTypes.STRING }
 }, {
 	freezeTableName: true,
 })
 // Relation citizen To Complaint
-Citizen.hasMany(Complaint, {foreignKey: 'citizenId', as: 'complaints'})
-Complaint.belongsTo(Citizen, {foreignKey: 'citizenId', as: 'users'})
+Citizen.hasMany(Complaint, { foreignKey: { name: 'citizenId' }, as: 'complaints' })
+Complaint.belongsTo(Citizen, { foreignKey: { name: 'citizenId' }, as: 'citizen' })
 
 // Relation complaint to letters
-Letters.hasMany(Complaint, {foreignKey: 'complaint_type', as:'complaints'})
-Complaint.belongsTo(Letters, {foreignKey: 'complaint_type', as: 'letters'})
+Letters.hasMany(Complaint, { foreignKey: 'complaint_type', as: 'complaints' })
+Complaint.belongsTo(Letters, { foreignKey: 'complaint_type', as: 'letters' })
 
 export default Complaint

@@ -1,14 +1,10 @@
 import { Sequelize } from "sequelize";
 import db from "../../database/database.js";
 
+
 const { DataTypes } = Sequelize
 
 const ComplaintResult = db.define('complaint_result', {
-	id: {
-		type: DataTypes.INTEGER,
-		autoIncrement: true,
-		primaryKey: true
-	},
 	complaintResultId: {
 		type: DataTypes.UUID,
 		primaryKey: true,
@@ -22,7 +18,7 @@ const ComplaintResult = db.define('complaint_result', {
 		allowNull: false,
 		defaultValue: 'pending'
 	},
-	message: {type: DataTypes.TEXT}
+	message: { type: DataTypes.TEXT }
 }, {
 	freezeTableName: true
 })

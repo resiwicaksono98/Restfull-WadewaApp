@@ -1,7 +1,6 @@
 @startuml
 
 entity citizens {
-	* id : INT
 	* citizenId: CHAR
 	--
 	* name : VARCHAR
@@ -13,7 +12,6 @@ entity citizens {
 }
 
 entity admins {
-	* id : INT
 	* adminId : CHAR
 	--
 	* email : VARCHAR
@@ -22,7 +20,6 @@ entity admins {
 }
 
 entity complaints {
-	* id : INTEGER
 	* complaintId: CHAR
 	--
 	citizenId : CHAR
@@ -33,7 +30,7 @@ entity complaints {
 }
 
 entity complaint_result {
-	* id : CHAR
+	* complaintResultId : CHAR
 	--
 	* adminId: CHAR
 	* complaintId:CHAR
@@ -42,7 +39,7 @@ entity complaint_result {
 }
 
 entity newst {
-	* id : CHAR
+	* newstId : CHAR
 	--
 	* adminId: CHAR
 	* title : VARCHAR
@@ -51,7 +48,7 @@ entity newst {
 }
 
 entity letters {
-	* id :  CHAR
+	* lettersId :  CHAR
 	--
 	* title : VARCHAR
 	* letter_number: VARCHAR
@@ -62,7 +59,7 @@ entity letters {
 }
 
 entity archives {
-	* id : CHAR
+	* archivesId : CHAR
 	--
 	* adminId : CHAR
 	name : VARCHAR
