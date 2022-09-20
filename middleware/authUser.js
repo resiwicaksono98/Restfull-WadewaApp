@@ -1,6 +1,7 @@
 import Citizen from '../app/Citizen/citizenModel.js'
 import Admin from '../app/Admin/adminModel.js'
 
+
 export const verifyUserCitizen = async (req,res,next) => {
 	try {
 		if(!req.session.citizenId) return res.status(401).json({msg: 'Please Your Login Citizen'})
