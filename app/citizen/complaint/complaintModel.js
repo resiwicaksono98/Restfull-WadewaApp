@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
-import db from "../../../database/database.js";
-import Citizen from "../citizenModel.js";
+import db from "../../database/database.js";
+import Citizen from "../citizen/citizenModel.js";
 import Letters from "../letters/lettersModel.js";
 
 const {DataTypes} = Sequelize
