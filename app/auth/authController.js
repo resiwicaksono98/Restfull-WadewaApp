@@ -55,7 +55,6 @@ export const loginAdmin = async (req, res) => {
 }
 
 export const me = async (req, res) => {
-	console.log(req.session);
 	if (!req.session.citizenId) {
 		return res.status(401).json({ msg: 'Please Login Your Account' })
 	}

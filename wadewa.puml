@@ -22,9 +22,10 @@ entity admins {
 }
 
 entity complaints {
-	*id : CHAR 
+	* id : INTEGER
+	* complaintId: CHAR
 	--
-	customerId : CHAR
+	citizenId : CHAR
 	complaint_type: VARCHAR
 	description: TEXT
 	image_url: VARCHAR
