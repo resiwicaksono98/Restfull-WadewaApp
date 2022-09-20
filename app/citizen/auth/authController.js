@@ -1,5 +1,5 @@
-import Admin from "../admin/adminModel.js";
-import Citizen from "../citizen/citizenModel.js";
+import Admin from "../../Admin/adminModel.js";
+import Citizen from "../citizenModel.js";
 import bcrypt from 'bcrypt'
 
 export const registerUser = async (req, res) => {
