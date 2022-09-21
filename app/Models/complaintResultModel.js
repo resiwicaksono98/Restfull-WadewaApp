@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../../database/database.js";
+import Admin from "./adminModel.js";
 import Citizen from "./citizenModel.js";
 import Complaint from "./complaintModel.js";
 import Letters from "./lettersModel.js";
@@ -37,8 +38,11 @@ ComplaintResult.belongsTo(Complaint, { foreignKey: 'complaintId', as: 'complaint
 Citizen.hasMany(ComplaintResult, { foreignKey: 'citizenId', as: 'complaintResult' })
 ComplaintResult.belongsTo(Citizen, { foreignKey: 'citizenId', as: 'citizen' })
 
-// Relation to
+// Relation to letter
 Letters.hasMany(ComplaintResult, { foreignKey: 'letterId', as: 'complaintResult' })
-ComplaintResult.belongsTo(Letters, {foreignKey: 'letterId', as: 'letter'})
+ComplaintResult.belongsTo(Letters, { foreignKey: 'letterId', as: 'letter' })
 
+// Relation to admin
+Admin.hasMany(ComplaintResult, { foreignKey: 'adminId', as: 'complaintResult' })
+ComplaintResult.belongsTo(Admin, { foreignKey: 'adminId', as: 'admin' })
 export default ComplaintResult

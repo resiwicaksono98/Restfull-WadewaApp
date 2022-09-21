@@ -4,6 +4,7 @@ import ComplaintResult from "../../Models/complaintResultModel.js";
 import Letters from "../../Models/lettersModel.js";
 import fs from 'fs'
 import db from "../../../database/database.js";
+import Admin from "../../Models/adminModel.js";
 
 export const getComplaintResult = async (req, res) => {
 	try {
@@ -20,6 +21,10 @@ export const getComplaintResult = async (req, res) => {
 				model: Letters,
 				as: 'letter',
 				attributes: ['title', 'letter_number', 'village_head', 'nip']
+			}, {
+				model: Admin,
+				as: 'admin',
+				attributes: ['name', 'email']
 			}]
 		})
 		return res.status(200).json({ msg: 'Complaint Result', data: complaintRes })
@@ -44,6 +49,10 @@ export const getComplaintResultById = async (req, res) => {
 				model: Letters,
 				as: 'letter',
 				attributes: ['title', 'letter_number', 'village_head', 'nip']
+			}, {
+				model: Admin,
+				as: 'admin',
+				attributes: ['name', 'email']
 			}]
 		})
 		return res.status(200).json({ msg: 'Complaint Result', data: complaintRes })
