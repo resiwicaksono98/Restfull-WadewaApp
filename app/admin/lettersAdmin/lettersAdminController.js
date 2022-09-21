@@ -11,6 +11,25 @@ export const createLetter = async (req, res) => {
 	}
 }
 
+export const getLetter = async (req, res) => {
+	try {
+		const letter = await Letters.findAll()
+		return res.status(200).json({ msg: 'All Latter', data: letter })
+	} catch (error) {
+		return res.status(500).json({ msg: error.message })
+	}
+}
+
+export const getLatterById = async (req, res) => {
+	try {
+		const letter = await Letters.findOne({ where: { letterId: req.params.letterId } })
+		if(!letter) return res.status(404).json({msg: 'Letter not found'})
+		return res.status(200).json({ msg: `Get Data ${letter.title}`, data: letter })
+	} catch (error) {
+		return res.status(500).json({ msg: error.message })
+	}
+}
+
 export const updateLetter = async (req, res) => {
 	try {
 		const payload = req.body
