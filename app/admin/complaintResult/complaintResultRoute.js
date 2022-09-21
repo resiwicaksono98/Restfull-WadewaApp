@@ -3,6 +3,7 @@ import { destroyComplaintResult, getComplaintResult, getComplaintResultById, upd
 import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url';
+import { adminOnly } from '../../../middleware/authUser.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const diskStorage = multer.diskStorage({
@@ -17,10 +18,10 @@ const diskStorage = multer.diskStorage({
 
 const router = express.Router()
 
-router.get('/admin/complaintResult', getComplaintResult)
-router.get('/admin/complaintResult/:complaintResultId', getComplaintResultById)
-router.delete('/admin/complaintResult/:complaintResultId', destroyComplaintResult)
-router.put('/admin/complaintResult/:complaintResultId',
+router.get('/admin/complaintResult', adminOnly, getComplaintResult)
+router.get('/admin/complaintResult/:complaintResultId', adminOnly, getComplaintResultById)
+router.delete('/admin/complaintResult/:complaintResultId', adminOnly, destroyComplaintResult)
+router.put('/admin/complaintResult/:complaintResultId', adminOnly,
 	multer({ storage: diskStorage }).single('files'),
 	updateComplaintResult)
 

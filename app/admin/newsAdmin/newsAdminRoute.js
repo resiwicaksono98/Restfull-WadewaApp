@@ -3,6 +3,7 @@ import { createNewsAdmin, destroyAdminNews, getNewsAdmin, getNewsAdminById, upda
 import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url';
+import { adminOnly } from '../../../middleware/authUser.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const diskStorage = multer.diskStorage({
@@ -17,13 +18,13 @@ const diskStorage = multer.diskStorage({
 
 const router = express.Router()
 
-router.get('/admin/newst', getNewsAdmin)
-router.get('/admin/newst/:newsId', getNewsAdminById)
-router.delete('/admin/newst/:newsId', destroyAdminNews)
+router.get('/admin/newst', adminOnly, getNewsAdmin)
+router.get('/admin/newst/:newsId', adminOnly, getNewsAdminById)
+router.delete('/admin/newst/:newsId', adminOnly, destroyAdminNews)
 router.post('/admin/newst',
 	multer({ storage: diskStorage }).single('image_news'),
 	createNewsAdmin)
-router.put('/admin/newst/:newsId',
+router.put('/admin/newst/:newsId', adminOnly,
 	multer({ storage: diskStorage }).single('image_news'),
 	updateNewsAdmin)
 
