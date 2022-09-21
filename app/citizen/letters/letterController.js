@@ -13,7 +13,7 @@ export const getLetter = async (req, res) => {
 
 export const getLatterById = async (req, res) => {
 	try {
-		const letter = await Letters.findOne({ where: { lettersId: req.params.lettersId } })
+		const letter = await Letters.findOne({ where: { letterId: req.params.letterId } })
 		return res.status(200).json({ msg: `Get Data ${letter.title}`, data: letter })
 	} catch (error) {
 		return res.status(500).json({ msg: error.message })

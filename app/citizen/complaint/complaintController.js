@@ -15,6 +15,8 @@ export const createComplaint = async (req, res) => {
 			const complaint = await Complaint.create(addImage, { transaction: t })
 
 			await ComplaintResult.create({
+				citizenId: userId,
+				letterId: complaint.complaint_type,
 				complaintId: complaint.complaintId
 			}, { transaction: t })
 			return res.status(200).json({ msg: "Create Complaint", data: complaint })

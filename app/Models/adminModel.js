@@ -4,11 +4,6 @@ import db from "../../database/database.js";
 const { DataTypes } = Sequelize;
 
 const Admin = db.define('admins', {
-	id: {
-		type: DataTypes.INTEGER,
-		autoIncrement: true,
-		primaryKey: true
-	},
 	adminId: {
 		type: DataTypes.UUID,
 		primaryKey: true,

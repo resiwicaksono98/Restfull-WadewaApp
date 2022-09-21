@@ -3,7 +3,7 @@ import db from "../../database/database.js";
 const { DataTypes } = Sequelize;
 
 const Letters = db.define('letters', {
-	lettersId: {
+	letterId: {
 		type: DataTypes.UUID,
 		primaryKey: true,
 		allowNull: false,

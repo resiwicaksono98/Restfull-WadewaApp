@@ -14,6 +14,7 @@ import ComplaintRoute from './app/Citizen/complaint/complaintRoute.js'
 import authAdminRoute from './app/Admin/auth/authAdminRoute.js'
 import lettersAdminRoute from './app/Admin/lettersAdmin/lettersAdminRoute.js'
 import complaintAdminRoute from './app/Admin/complaintAdmin/complaintAdminRoute.js'
+import complaintResultRoute from './app/Admin/complaintResult/complaintResultRoute.js'
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use('/api', ComplaintRoute)
 app.use('/api', authAdminRoute)
 app.use('/api', lettersAdminRoute)
 app.use('/api', complaintAdminRoute)
+app.use('/api', complaintResultRoute)
 
 
 

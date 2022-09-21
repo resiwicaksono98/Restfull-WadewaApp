@@ -16,8 +16,8 @@ const diskStorage = multer.diskStorage({
 
 const router = express.Router()
 
-router.delete('/complaints/admin/:complaintId', destroyComplaint)
-router.put('/complaints/admin/:complaintId',
+router.delete('/admin/complaints/:complaintId', destroyComplaint)
+router.put('/admin/complaints/:complaintId',
 	multer({ storage: diskStorage }).single('image_url'),
 	updateComplaint)
 

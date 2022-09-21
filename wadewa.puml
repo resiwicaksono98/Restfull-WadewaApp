@@ -4,7 +4,7 @@ entity citizens {
 	* citizenId: CHAR
 	--
 	* name : VARCHAR
-	* nik : INTEGER
+	* nik : VARCHAR
 	* email : VARCHAR
 	* password: VARCHAR
 	* address: VARCHAR
@@ -22,26 +22,28 @@ entity admins {
 entity complaints {
 	* complaintId: CHAR
 	--
-	citizenId : CHAR
+	citizenId : VARCHAR
 	complaint_type: VARCHAR
 	description: TEXT
 	image_url: VARCHAR
 	createdAt: datetime
 }
 
-entity complaint_result {
+entity complaintResult {
 	* complaintResultId : CHAR
 	--
-	* adminId: CHAR
-	* complaintId:CHAR
+	* complaintId:VARCHAR
+	adminId: VARCHAR
+	citizenId: VARCHAR
 	status: VARCHAR
 	message : TEXT
+	files: VARCHAR
 }
 
 entity newst {
 	* newstId : CHAR
 	--
-	* adminId: CHAR
+	* adminId: VARCHAR
 	* title : VARCHAR
 	* description: TEXT
 	image_news: VARCHAR
@@ -58,20 +60,13 @@ entity letters {
 	* nip: INT
 }
 
-entity archives {
-	* archivesId : CHAR
-	--
-	* adminId : CHAR
-	name : VARCHAR
-	letter_name : VARCHAR
-	nik : VARCHAR
-}
 
-cityzens ||--o{ complaints
-complaints ||--|| complaint_result
+citizens ||--o{ complaints
+complaints ||--|| complaintResult
 letters ||--|{ complaints
 admins ||-o{ newst
-admins ||-|| complaint_result
-complaint_result ||--|| archives
+admins ||-|| complaintResult
+citizens ||--o{ complaintResult
+letters ||--o{ complaintResult
 
 @enduml

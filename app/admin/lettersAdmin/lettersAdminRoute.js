@@ -3,8 +3,8 @@ import { createLetter, destroyLetter, updateLetter } from './lettersAdminControl
 
 const router = express.Router()
 
-router.post('/letters/admin', createLetter)
-router.put('/letters/admin/:lettersId', updateLetter)
-router.delete('/letters/admin/:lettersId',  destroyLetter)
+router.post('/admin/letters', createLetter)
+router.put('/admin/letters/:letterId', updateLetter)
+router.delete('/admin/letters/:letterId',  destroyLetter)
 
 export default router
