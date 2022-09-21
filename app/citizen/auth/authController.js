@@ -30,7 +30,7 @@ export const loginUser = async (req, res) => {
 
 
 export const me = async (req, res) => {
-	if (!req.session.citizenId) {
+	if (!req.session.citizenId && !req.userId) {
 		return res.status(401).json({ msg: 'Please Login Your Account' })
 	}
 	const user = await Citizen.findOne({

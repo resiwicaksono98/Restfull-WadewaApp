@@ -9,12 +9,13 @@ import db from './database/database.js'
 // Import Route Citizen
 import authRoute from './app/Citizen/auth/authRoute.js'
 import letterRoute from './app/Citizen/letters/letterRoute.js'
-import ComplaintRoute from './app/Citizen/complaint/complaintRoute.js'
+import complaintRoute from './app/Citizen/complaint/complaintRoute.js'
+import complaintResultRoute from './app/Citizen/complaintResult/complaintResultRoute.js'
 // Import Route Admin
 import authAdminRoute from './app/Admin/auth/authAdminRoute.js'
 import lettersAdminRoute from './app/Admin/lettersAdmin/lettersAdminRoute.js'
 import complaintAdminRoute from './app/Admin/complaintAdmin/complaintAdminRoute.js'
-import complaintResultRoute from './app/Admin/complaintResult/complaintResultRoute.js'
+import complaintResultAdminRoute from './app/Admin/complaintResult/complaintResultRoute.js'
 
 const app = express();
 
@@ -48,13 +49,14 @@ app.use(express.static('public'));
 // User / Citizen
 app.use('/api', authRoute)
 app.use('/api', letterRoute)
-app.use('/api', ComplaintRoute)
+app.use('/api', complaintRoute)
+app.use('/api', complaintResultRoute)
 
 // Admin
 app.use('/api', authAdminRoute)
 app.use('/api', lettersAdminRoute)
 app.use('/api', complaintAdminRoute)
-app.use('/api', complaintResultRoute)
+app.use('/api', complaintResultAdminRoute)
 
 
 
