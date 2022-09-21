@@ -1,11 +1,10 @@
 @startuml
 
 entity citizens {
-	* id : INT
 	* citizenId: CHAR
 	--
 	* name : VARCHAR
-	* nik : INTEGER
+	* nik : VARCHAR
 	* email : VARCHAR
 	* password: VARCHAR
 	* address: VARCHAR
@@ -13,7 +12,6 @@ entity citizens {
 }
 
 entity admins {
-	* id : INT
 	* adminId : CHAR
 	--
 	* email : VARCHAR
@@ -22,36 +20,37 @@ entity admins {
 }
 
 entity complaints {
-	* id : INTEGER
 	* complaintId: CHAR
 	--
-	citizenId : CHAR
+	citizenId : VARCHAR
 	complaint_type: VARCHAR
 	description: TEXT
 	image_url: VARCHAR
 	createdAt: datetime
 }
 
-entity complaint_result {
-	* id : CHAR
+entity complaintResult {
+	* complaintResultId : CHAR
 	--
-	* adminId: CHAR
-	* complaintId:CHAR
+	* complaintId:VARCHAR
+	adminId: VARCHAR
+	citizenId: VARCHAR
 	status: VARCHAR
 	message : TEXT
+	files: VARCHAR
 }
 
 entity newst {
-	* id : CHAR
+	* newstId : CHAR
 	--
-	* adminId: CHAR
+	* adminId: VARCHAR
 	* title : VARCHAR
 	* description: TEXT
 	image_news: VARCHAR
 }
 
 entity letters {
-	* id :  CHAR
+	* lettersId :  CHAR
 	--
 	* title : VARCHAR
 	* letter_number: VARCHAR
@@ -61,20 +60,13 @@ entity letters {
 	* nip: INT
 }
 
-entity archives {
-	* id : CHAR
-	--
-	* adminId : CHAR
-	name : VARCHAR
-	letter_name : VARCHAR
-	nik : VARCHAR
-}
 
-cityzens ||--o{ complaints
-complaints ||--|| complaint_result
+citizens ||--o{ complaints
+complaints ||--|| complaintResult
 letters ||--|{ complaints
 admins ||-o{ newst
-admins ||-|| complaint_result
-complaint_result ||--|| archives
+admins ||-|| complaintResult
+citizens ||--o{ complaintResult
+letters ||--o{ complaintResult
 
 @enduml

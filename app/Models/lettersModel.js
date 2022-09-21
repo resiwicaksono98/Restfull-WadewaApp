@@ -1,15 +1,9 @@
 import { Sequelize } from "sequelize";
 import db from "../../database/database.js";
-
 const { DataTypes } = Sequelize;
 
 const Letters = db.define('letters', {
-	id: {
-		type: DataTypes.INTEGER,
-		autoIncrement: true,
-		primaryKey: true
-	},
-	lettersId: {
+	letterId: {
 		type: DataTypes.UUID,
 		primaryKey: true,
 		allowNull: false,

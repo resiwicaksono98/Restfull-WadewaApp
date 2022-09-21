@@ -1,6 +1,5 @@
-import express from "express";
-import { verifyUserCitizen } from '../../../middleware/authUser.js'
-import { createComplaint, getComplaintUser, getComplaintUserById } from "./complaintController.js";
+import express from 'express'
+import { destroyComplaint, updateComplaint } from './complaintAdminController.js'
 import multer from 'multer'
 import path from 'path'
 import { fileURLToPath } from 'url';
@@ -17,12 +16,9 @@ const diskStorage = multer.diskStorage({
 
 const router = express.Router()
 
-router.post('/complaints',
-	verifyUserCitizen,
+router.delete('/admin/complaints/:complaintId', destroyComplaint)
+router.put('/admin/complaints/:complaintId',
 	multer({ storage: diskStorage }).single('image_url'),
-	createComplaint
-)
-router.get('/complaints', verifyUserCitizen, getComplaintUser)
-router.get('/complaints/:complaintId', verifyUserCitizen, getComplaintUserById)
+	updateComplaint)
 
 export default router
