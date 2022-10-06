@@ -42,7 +42,6 @@ export const me = async (req, res) => {
 }
 
 export const logoutAdmin = async (req, res) => {
-
 	req.session.adminId = null
 	res.status(200).json({ msg: "You Are Logout" })
 }

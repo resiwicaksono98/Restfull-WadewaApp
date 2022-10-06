@@ -3,9 +3,9 @@ import { adminOnly } from '../../../middleware/authUser.js'
 import { loginAdmin, logoutAdmin, me, registerAdmin } from './authAdminController.js'
 const router = express.Router()
 
-router.post('/auth/admin', registerAdmin)
-router.post('/auth/admin/login', loginAdmin)
-router.get('/auth/admin/me', adminOnly, me)
-router.delete('/auth/admin/logout',adminOnly, logoutAdmin)
+router.post('/admin/auth/register', registerAdmin)
+router.post('/admin/auth/login', loginAdmin)
+router.get('/admin/auth/me', adminOnly, me)
+router.delete('/admin/auth/logout',adminOnly, logoutAdmin)
 
 export default router
