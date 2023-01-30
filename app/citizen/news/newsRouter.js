@@ -1,9 +1,11 @@
-import express from 'express'
-import { verifyUserCitizen } from '../../../middleware/authUser.js'
-import { getNews, getNewsById } from './newsController.js'
-const router = express.Router()
+/** @format */
 
-router.get('/newst', getNews)
-router.get('/newst/:newsId', verifyUserCitizen, getNewsById)
+import express from "express";
+import { verifyUserCitizen } from "../../../middleware/authUser.js";
+import { getNews, getNewsById } from "./newsController.js";
+const router = express.Router();
 
-export default router
+router.get("/newst", getNews);
+router.get("/newst/:newsId", getNewsById);
+
+export default router;

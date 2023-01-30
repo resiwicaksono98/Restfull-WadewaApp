@@ -16,7 +16,6 @@ export const verifyUserCitizen = async (req, res, next) => {
 };
 
 export const adminOnly = async (req, res, next) => {
-   console.log({ adminID: req.session });
    try {
       if (!req.session.adminId) return res.status(401).json({ msg: "Please Your Login Admin" });
       const admin = await Admin.findOne({ where: { adminId: req.session.adminId } });

@@ -36,12 +36,12 @@ app.use(
    session({
       name: "authenticated",
       secret: secretKey,
-      resave: true,
-      saveUninitialized: true,
+      resave: false,
+      saveUninitialized: false,
       store: store,
       cookie: {
          secure: "auto",
-         httpOnly: false,
+         httpOnly: true,
          maxAge: 1000 * 60 * 60 * 24 * 1, // 1 Day
       },
    })

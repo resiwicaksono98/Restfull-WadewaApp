@@ -22,7 +22,6 @@ export const loginAdmin = async (req, res) => {
       if (!match) return res.status(400).json({ msg: "Wrong Password" });
       req.session.adminId = user.adminId;
       const { name, email } = user;
-      console.log(req.session.adminId);
       res.status(200).json({ msg: "Success Login", data: { name, email } });
    } catch (error) {
       return res.status(400).json({ msg: error.message });
@@ -44,9 +43,6 @@ export const me = async (req, res) => {
 };
 
 export const logoutAdmin = async (req, res) => {
-   req.session.adminId = null;
-   //  req.session.destroy((err) => {
-   //     res.clearCookie("authenticated");
-   //  });
+   req.session.destroy();
    res.status(200).json({ msg: "You Are Logout" });
 };
